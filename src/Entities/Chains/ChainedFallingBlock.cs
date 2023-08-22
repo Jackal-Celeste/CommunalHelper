@@ -8,20 +8,26 @@ public class ChainedFallingBlock : Solid
     private readonly char tileType;
     private readonly TileGrid tiles;
 
-    private bool hasStartedFalling;
+    private bool hasStartedFalling; 
+    public bool hasFallen, move;
     private readonly bool climbFall;
     private bool held;
 
+
+    public readonly float chainStopY;
+    private readonly float startY;
+
     private readonly MTexture chainTexture;
 
-    private readonly float chainStopY, startY;
     private readonly bool centeredChain;
     private readonly bool chainOutline;
 
     private readonly bool indicator, indicatorAtStart;
     private float pathLerp;
 
+    private Vector2 origPosition;
     private readonly SoundSource rattle;
+
 
     public ChainedFallingBlock(EntityData data, Vector2 offset)
         : this(data.Position + offset, data.Width, data.Height, data.Char("tiletype", '3'), data.Bool("climbFall", true), data.Bool("behind"), data.Int("fallDistance"), data.Bool("centeredChain"), data.Bool("chainOutline", true), data.Bool("indicator"), data.Bool("indicatorAtStart"), data.Attr("chainTexture", Chain.DEFAULT_CHAIN_PATH)) { }
@@ -57,6 +63,9 @@ public class ChainedFallingBlock : Solid
         SurfaceSoundIndex = SurfaceIndex.TileToIndex[tileType];
         if (behind)
             Depth = Depths.SolidsBelow;
+
+        origPosition = new Vector2(X, Y);
+        hasFallen = false;
     }
 
     public override void OnShake(Vector2 amount)
@@ -126,16 +135,13 @@ public class ChainedFallingBlock : Solid
                 {
                     held = true;
                     MoveToY(chainStopY, LiftSpeed.Y);
+                    hasFallen = true;
                     break;
                 }
                 yield return null;
             }
 
-            ImpactSfx();
-            Input.Rumble(RumbleStrength.Strong, RumbleLength.Medium);
-            SceneAs<Level>().DirectionalShake(Vector2.UnitY, 0.3f);
-            StartShaking();
-            LandParticles();
+            
 
             rattle.Stop();
             if (held)
@@ -160,11 +166,12 @@ public class ChainedFallingBlock : Solid
             {
                 yield return 0.1f;
             }
+            
         }
         Safe = true;
     }
 
-    private void LandParticles()
+    public virtual void LandParticles()
     {
         for (int i = 2; i <= Width; i += 4)
         {
@@ -176,6 +183,8 @@ public class ChainedFallingBlock : Solid
                 ;
             }
         }
+        //Jackal - new var to check if falling done
+        hasFallen = true;
     }
 
     private void FallParticles()
@@ -201,7 +210,7 @@ public class ChainedFallingBlock : Solid
         }, Center);
     }
 
-    private void ImpactSfx()
+    public void ImpactSfx()
     {
         // Some impacts weren't as attenuated like the game_gen_fallblock_impact event,
         // and it was inconsistent with the fact that you can hear the chain tighten but not the block impact.
@@ -223,6 +232,10 @@ public class ChainedFallingBlock : Solid
             pathLerp = Calc.Approach(pathLerp, 1f, Engine.DeltaTime * 2f);
     }
 
+
+
+
+
     public override void Render()
     {
         if ((hasStartedFalling || indicatorAtStart) && indicator && !held)
@@ -232,13 +245,18 @@ public class ChainedFallingBlock : Solid
         }
 
         if (centeredChain)
-            Chain.DrawChainLine(new Vector2(X + (Width / 2f), startY), new Vector2(X + (Width / 2f), Y), chainTexture, chainOutline);
+
+        {
+            Chain.DrawChainLine(new Vector2(origPosition.X + (Width / 2f), origPosition.Y), new Vector2(X + (Width / 2f), Y), chainOutline);
+        }
         else
         {
-            Chain.DrawChainLine(new Vector2(X + 3, startY), new Vector2(X + 3, Y), chainTexture, chainOutline);
-            Chain.DrawChainLine(new Vector2(X + Width - 4, startY), new Vector2(X + Width - 4, Y), chainTexture, chainOutline);
+            Chain.DrawChainLine(new Vector2(origPosition.X + 3, origPosition.Y), new Vector2(X + 3, Y), chainOutline);
+            Chain.DrawChainLine(new Vector2(origPosition.X + Width - 4, origPosition.Y), new Vector2(X + Width - 4, Y), chainOutline);
+
         }
 
         base.Render();
     }
+
 }
