@@ -4,12 +4,13 @@ using MonoMod.RuntimeDetour;
 using MonoMod.Utils;
 using System.Collections;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Celeste.Mod.CommunalHelper.Entities;
 
 public abstract class CustomBooster : Booster
 {
-    protected DynData<Booster> BoosterData;
+    protected DynamicData BoosterData;
 
     public ParticleType P_CustomAppear, P_CustomBurst;
 
@@ -23,10 +24,13 @@ public abstract class CustomBooster : Booster
 
     public float MovementInBubbleFactor { get; set; } = 3f;
 
+    public virtual bool IgnorePlayerSpeed => false;
+    public virtual bool OffsetCameraBySpeed => true;
+
     public CustomBooster(Vector2 position, bool redBoost)
         : base(position, redBoost)
     {
-        BoosterData = new DynData<Booster>(this);
+        BoosterData = new(typeof(Booster), this);
 
         P_CustomAppear = P_Appear;
         P_CustomBurst = redBoost ? P_BurstRed : P_Burst;
@@ -36,16 +40,16 @@ public abstract class CustomBooster : Booster
     {
         Sprite oldSprite = BoosterData.Get<Sprite>("sprite");
         Remove(oldSprite);
-        BoosterData["sprite"] = newSprite;
+        BoosterData.Set("sprite", newSprite);
         Add(newSprite);
     }
 
     protected void SetParticleColors(Color burstColor, Color appearColor)
     {
-        BoosterData["particleType"] = P_CustomBurst = new ParticleType(P_Burst)
+        BoosterData.Set("particleType", P_CustomBurst = new ParticleType(P_Burst)
         {
             Color = burstColor
-        };
+        });
         P_CustomAppear = new ParticleType(P_Appear)
         {
             Color = appearColor
@@ -104,7 +108,7 @@ public abstract class CustomBooster : Booster
     /// </summary>
     /// <param name="player">The player.</param>
     /// <returns>The IEnumerator that represents the routine.</returns>
-    protected virtual IEnumerator BoostRoutine(Player player)
+    protected virtual IEnumerator BoostCoroutine(Player player)
     {
         yield return 0.25f;
         if (RedBoost)
@@ -116,7 +120,11 @@ public abstract class CustomBooster : Booster
     private static readonly MethodInfo m_Player_orig_Update
         = typeof(Player).GetMethod("orig_Update", BindingFlags.Public | BindingFlags.Instance);
 
+    private static readonly MethodInfo m_Player_get_CameraTarget
+        = typeof(Player).GetProperty(nameof(Player.CameraTarget)).GetGetMethod();
+
     private static ILHook IL_Player_orig_Update;
+    private static ILHook IL_Player_get_CameraTarget;
 
     public static void Load()
     {
@@ -135,6 +143,7 @@ public abstract class CustomBooster : Booster
         On.Celeste.Player.RedDashCoroutine += Player_RedDashCoroutine;
 
         IL_Player_orig_Update = new ILHook(m_Player_orig_Update, Player_orig_Update);
+        IL_Player_get_CameraTarget = new ILHook(m_Player_get_CameraTarget, Player_get_CameraTarget);
     }
 
     public static void Unload()
@@ -153,6 +162,7 @@ public abstract class CustomBooster : Booster
         On.Celeste.Player.RedDashCoroutine -= Player_RedDashCoroutine;
 
         IL_Player_orig_Update.Dispose();
+        IL_Player_get_CameraTarget.Dispose();
     }
 
     private static void Booster_Respawn(On.Celeste.Booster.orig_Respawn orig, Booster self)
@@ -199,17 +209,16 @@ public abstract class CustomBooster : Booster
             {
                 if (justEntered)
                 {
-                    booster.BoosterData["cannotUseTimer"] = 0.45f;
+                    booster.BoosterData.Set("cannotUseTimer", 0.45f);
+
                     if (booster.RedBoost)
-                    {
                         player.RedBoost(self);
-                    }
                     else
-                    {
                         player.Boost(self);
-                    }
+
                     Audio.Play(booster.enterSoundEvent, self.Position);
                     booster.BoosterData.Get<Wiggler>("wiggler").Start();
+
                     Sprite sprite = booster.BoosterData.Get<Sprite>("sprite");
                     sprite.Play("inside");
                     sprite.FlipX = player.Facing == Facings.Left;
@@ -256,7 +265,7 @@ public abstract class CustomBooster : Booster
     private static IEnumerator Player_BoostCoroutine(On.Celeste.Player.orig_BoostCoroutine orig, Player self)
     {
         IEnumerator routine = self.LastBooster is CustomBooster booster
-            ? booster.BoostRoutine(self)
+            ? booster.BoostCoroutine(self)
             : orig(self);
         while (routine.MoveNext())
             yield return routine.Current;
@@ -325,9 +334,26 @@ public abstract class CustomBooster : Booster
     }
 
     private static bool UnaffectedBySpeed(Player player)
+        => player.StateMachine.State is Player.StRedDash
+        && player.LastBooster is CustomBooster booster
+        && booster.IgnorePlayerSpeed;
+
+    private static void Player_get_CameraTarget(ILContext il)
     {
-        return player.StateMachine.State == Player.StRedDash && player.LastBooster is DreamBoosterCurve or CurvedBooster;
+        ILCursor cursor = new(il);
+
+        cursor.GotoNext(MoveType.After, instr => instr.MatchLdcI4(Player.StRedDash));
+        ILLabel label = (ILLabel) cursor.Next.Operand;
+
+        cursor.GotoNext(MoveType.After, instr => instr.MatchBneUn(label));
+        cursor.Emit(OpCodes.Ldarg_0);
+        cursor.EmitDelegate<Predicate<Player>>(DoesNotAffectCamera);
+        cursor.Emit(OpCodes.Brtrue, label);
     }
+
+    private static bool DoesNotAffectCamera(Player player)
+        => player.LastBooster is CustomBooster booster
+        && !booster.OffsetCameraBySpeed;
 
     #endregion
 }

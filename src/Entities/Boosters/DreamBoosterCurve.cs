@@ -80,6 +80,8 @@ public class DreamBoosterCurve : DreamBooster
 
     public readonly Vector2 EndingSpeed;
 
+    public override bool IgnorePlayerSpeed => true;
+
     public DreamBoosterCurve(EntityData data, Vector2 offset)
         : this(data.Position + offset, data.NodesWithPosition(offset), data.Enum<CurveType>("curve"), !data.Bool("hidePath"), data.Enum("pathStyle", PathStyle.Arrow), data.Bool("proximityPath", true)) { }
 
@@ -136,7 +138,7 @@ public class DreamBoosterCurve : DreamBooster
     {
         base.RedDashUpdateBefore(player);
 
-        DynData<Player> data = player.GetData();
+        DynamicData data = player.GetData();
 
         Vector2 prev = player.Position;
 
@@ -153,10 +155,10 @@ public class DreamBoosterCurve : DreamBooster
 
         // player's speed won't matter, we won't allow it to move while in a curved booster.
         // this is here so that the player doesn't die to spikes that it shouldn't die to.
-        player.Speed = derivative.SafeNormalize();
+        player.SetBoosterFacing(derivative.SafeNormalize());
 
-        player.MoveToX(next.X, (Collision) data["onCollideH"]);
-        player.MoveToY(next.Y + offY, (Collision) data["onCollideV"]);
+        player.MoveToX(next.X, data.Get<Collision>("onCollideH"));
+        player.MoveToY(next.Y + offY, data.Get<Collision>("onCollideV"));
 
         // Then finish overriding.
         GravityHelper.EndOverride?.Invoke();

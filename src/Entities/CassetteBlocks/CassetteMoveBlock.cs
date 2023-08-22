@@ -1,4 +1,5 @@
-﻿using FMOD.Studio;
+﻿using Celeste.Mod.CommunalHelper.Components;
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using Directions = Celeste.MoveBlock.Directions;
@@ -76,7 +77,7 @@ public class CassetteMoveBlock : CustomCassetteBlock
         P_Break = new ParticleType(MoveBlock.P_Break) { Color = color };
         P_BreakPressed = new ParticleType(MoveBlock.P_Break) { Color = pressedColor };
 
-        Add(new MoveBlockRedirectable(new MonoMod.Utils.DynamicData(this))
+        Add(new Redirectable(new MonoMod.Utils.DynamicData(this))
         {
             Get_CanSteer = () => false,
             Get_Direction = () => Direction,
@@ -219,7 +220,7 @@ public class CassetteMoveBlock : CustomCassetteBlock
             yield return 0.2f;
 
             BreakParticles();
-            Get<MoveBlockRedirectable>()?.ResetBlock();
+            Get<Redirectable>()?.ResetBlock();
             List<MoveBlockDebris> debris = new();
             for (int x = 0; x < Width; x += 8)
             {

@@ -3,8 +3,13 @@ global using Microsoft.Xna.Framework;
 global using Monocle;
 global using System;
 using Celeste.Mod.CommunalHelper.Backdrops;
+using Celeste.Mod.CommunalHelper.Components;
 using Celeste.Mod.CommunalHelper.DashStates;
 using Celeste.Mod.CommunalHelper.Entities;
+using Celeste.Mod.CommunalHelper.Entities.Misc;
+using Celeste.Mod.CommunalHelper.Entities.StrawberryJam;
+using Celeste.Mod.CommunalHelper.States;
+using Celeste.Mod.CommunalHelper.Triggers.StrawberryJam;
 using MonoMod.ModInterop;
 
 namespace Celeste.Mod.CommunalHelper;
@@ -55,7 +60,7 @@ public class CommunalHelperModule : EverestModule
 
         AttachedWallBooster.Hook();
         MoveBlockRedirect.Load();
-        MoveBlockRedirectable.Load();
+        Redirectable.Load();
         MoveSwapBlock.Load();
 
         AbstractInputController.Load();
@@ -82,8 +87,22 @@ public class CommunalHelperModule : EverestModule
 
         PlayerSeekerBarrier.Hook();
         PlayerSeekerBarrierRenderer.Hook();
+        
+        ShowHitboxTrigger.Load();
+        GrabTempleGate.Hook();
+        SolarElevator.Hook();
+        ExplodingStrawberry.Load();
+        ExpiringDashRefill.Load();
+        WormholeBooster.Load();
+
+        AeroBlockCharged.Load();
+
+        Shape3DRenderer.Load();
+
+        St.Load();
 
         CommunalHelperGFX.Load();
+        Pushable.Load();
 
         #region Imports
 
@@ -121,7 +140,7 @@ public class CommunalHelperModule : EverestModule
 
         AttachedWallBooster.Unhook();
         MoveBlockRedirect.Unload();
-        MoveBlockRedirectable.Unload();
+        Redirectable.Unload();
         MoveSwapBlock.Unload();
         AbstractInputController.Unload();
         CassetteJumpFixController.Unload();
@@ -146,8 +165,25 @@ public class CommunalHelperModule : EverestModule
 
         PlayerSeekerBarrier.Unhook();
         PlayerSeekerBarrierRenderer.Unhook();
+        
+        ShowHitboxTrigger.Unload();
+        GrabTempleGate.Unhook();
+        SolarElevator.Unhook();
+        ExplodingStrawberry.Unload();
+        ExpiringDashRefill.Unload();
+        WormholeBooster.Unload();
+
+        AeroBlockCharged.Unload();
+
+        Shape3DRenderer.Unload();
+
+        St.Unload();
+
+        Cloudscape.Unload();
+        BetaCube.Unload();
 
         CommunalHelperGFX.Unload();
+        Pushable.Unload();
     }
 
     public override void Initialize()
@@ -162,6 +198,10 @@ public class CommunalHelperModule : EverestModule
 
         // We may hook methods in other mods, so this needs to be done after they're loaded
         AbstractPanel.LoadDelayed();
+
+        AeroBlock.Initialize();
+
+        BetaCube.Initialize();
 
         /*
          * Some Communal Helper mechanics don't work well with Gravity Helper.
@@ -208,7 +248,13 @@ public class CommunalHelperModule : EverestModule
 
         PlayerSeekerHair.InitializeTextures();
 
-        Cloudscape.InitializeTextures();
+        WormholeBooster.InitializeParticles();
+
+        AeroBlock.LoadContent();
+
+        St.Initialize();
+
+        Cloudscape.Initalize();
     }
 
     protected override void CreateModMenuSectionHeader(TextMenu menu, bool inGame, FMOD.Studio.EventInstance snapshot)
@@ -272,7 +318,7 @@ public class CommunalHelperModule : EverestModule
 
     private object CustomBirdTutorial_OnParseCommand(string command)
     {
-        // Thank you max480.
+        // Thank you maddie.
         if (command == "CommunalHelperSyncedZipMoverBinding")
         {
             return Settings.AllowActivateRebinding ?

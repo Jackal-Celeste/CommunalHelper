@@ -1,4 +1,5 @@
-﻿using Celeste.Mod.CommunalHelper.Imports;
+﻿using Celeste.Mod.CommunalHelper.Components;
+using Celeste.Mod.CommunalHelper.Imports;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.Utils;
@@ -37,7 +38,7 @@ internal class DreamJellyfish : Glider
         set => dreamDashCollider.Active = value;
     }
 
-    private readonly DynData<Glider> gliderData;
+    private readonly DynamicData gliderData;
 
     public Sprite Sprite;
 
@@ -47,16 +48,16 @@ internal class DreamJellyfish : Glider
     public DreamJellyfish(Vector2 position, bool bubble, bool tutorial)
         : base(position, bubble, tutorial)
     {
-        gliderData = new DynData<Glider>(this);
+        gliderData = new DynamicData(typeof(Glider), this);
 
         Sprite oldSprite = gliderData.Get<Sprite>("sprite");
         Remove(oldSprite);
-        gliderData["sprite"] = Sprite = CommunalHelperGFX.SpriteBank.Create("dreamJellyfish");
+        gliderData.Set("sprite", Sprite = CommunalHelperGFX.SpriteBank.Create("dreamJellyfish"));
         Add(Sprite);
 
         Visible = Sprite.Visible = false;
 
-        Add(dreamDashCollider = new DreamDashCollider(new Hitbox(28, 16, -13, -18), OnDreamDashExit));
+        Add(dreamDashCollider = new DreamDashCollider(new Hitbox(28, 16, -13, -18), OnDreamDashEnter, OnDreamDashExit));
 
         // The Dreamdash Collider does not shift down when this entity is inverted (via GravityHelper)
         // So let's add a listener that does this for us.
@@ -103,14 +104,26 @@ internal class DreamJellyfish : Glider
         scene.Tracker.GetEntity<DreamJellyfishRenderer>().Untrack(this);
     }
 
+    private void OnDreamDashEnter(Player player)
+    {
+        DynamicData data = DynamicData.For(player);
+
+        BloomPoint starFlyBloom = data.Get<BloomPoint>("starFlyBloom");
+
+        // Prevents a crash caused by entering the feather fly state while dream dashing through a dream jellyfish.
+        starFlyBloom ??= new(new Vector2(0f, -6f), 0f, 16f) { Visible = false };
+
+        data.Set("starFlyBloom", starFlyBloom);
+    }
+
     public void OnDreamDashExit(Player player)
     {
         DisableDreamDash();
         if (Input.GrabCheck && player.DashDir.Y <= 0)
         {
             // force-allow pickup
-            player.GetData()["minHoldTimer"] = 0f;
-            new DynData<Holdable>(Hold)["cannotHoldTimer"] = 0;
+            player.GetData().Set("minHoldTimer", 0f);
+            DynamicData.For(Hold).Set("cannotHoldTimer", 0);
 
             if ((bool) m_Player_Pickup.Invoke(player, new object[] { Hold }))
             {

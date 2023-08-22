@@ -57,6 +57,30 @@ entities.CommunalHelper/HeldBooster.attributes.description.speed=The speed of th
 entities.CommunalHelper/HeldBooster.attributes.description.deathTimer=The maximum time the player can wait before starting a dash. If exceeded, the player is killed.\nSet this option to a negative value to ignore this behavior.
 entities.CommunalHelper/HeldBooster.attributes.description.blinkSfx=Whether the booster should play a beep sound every time it blinks when ticking down.
 
+# Spiral Booster
+entities.CommunalHelper/SpiralBooster.placements.name.clockwise=Spiral Booster (Clockwise)
+entities.CommunalHelper/SpiralBooster.placements.name.counterclockwise=Spiral Booster (Counterclockwise)
+entities.CommunalHelper/SpiralBooster.placements.name.direct_clockwise=Spiral Booster (Direct, Clockwise)
+entities.CommunalHelper/SpiralBooster.placements.name.direct_counterclockwise=Spiral Booster (Direct, Counterclockwise)
+entities.CommunalHelper/SpiralBooster.attributes.description.angle=The angle (in degrees) of the arc along which this booster travels.\nThis value can go above 360° to create a path that continues past a full turn, but that doesn't keep going indefinitely.\n\nThe default value is set to 180°, or half a full turn.
+entities.CommunalHelper/SpiralBooster.attributes.description.clockwise=Spiral clockwise around the starting position of this Spiral Booster.
+entities.CommunalHelper/SpiralBooster.attributes.description.spiralSpeed=The speed at which the player spirals around this booster's starting position.\nThe default value is the vanilla red booster speed, which is equal to 240.0.
+entities.CommunalHelper/SpiralBooster.attributes.description.beginTime=The time (in seconds) it takes for the bubble to move from it's starting position to the beginning position of the arc or circle.\nThe default value was arbitrarily chosen to be 0.75s.
+entities.CommunalHelper/SpiralBooster.attributes.description.delay=The time (in secondes) that is spent waiting between the straight line movement and the arc movement.\nThe default value was arbitrarily chosen to be 0.2s.
+entities.CommunalHelper/SpiralBooster.attributes.description.pathColor=The hexadecimal color code for the color of this booster's path.
+
+# Spiral Dream Booster
+entities.CommunalHelper/SpiralDreamBooster.placements.name.clockwise=Spiral Dream Booster (Clockwise)
+entities.CommunalHelper/SpiralDreamBooster.placements.name.counterclockwise=Spiral Dream Booster (Counterclockwise)
+entities.CommunalHelper/SpiralDreamBooster.placements.name.direct_clockwise=Spiral Dream Booster (Direct, Clockwise)
+entities.CommunalHelper/SpiralDreamBooster.placements.name.direct_counterclockwise=Spiral Dream Booster (Direct, Counterclockwise)
+entities.CommunalHelper/SpiralDreamBooster.attributes.description.angle=The angle (in degrees) of the arc along which this booster travels.\nThis value can go above 360° to create a path that continues past a full turn, but that doesn't keep going indefinitely.\n\nThe default value is set to 180°, or half a full turn.
+entities.CommunalHelper/SpiralDreamBooster.attributes.description.clockwise=Spiral clockwise around the starting position of this Spiral Dream Booster.
+entities.CommunalHelper/SpiralDreamBooster.attributes.description.spiralSpeed=The speed at which the player spirals around this booster's starting position.\nThe default value is the vanilla red booster speed, which is equal to 240.0.
+entities.CommunalHelper/SpiralDreamBooster.attributes.description.beginTime=The time (in seconds) it takes for the bubble to move from it's starting position to the beginning position of the arc or circle.\nThe default value was arbitrarily chosen to be 0.75s.
+entities.CommunalHelper/SpiralDreamBooster.attributes.description.delay=The time (in secondes) that is spent waiting between the straight line movement and the arc movement.\nThe default value was arbitrarily chosen to be 0.2s.
+entities.CommunalHelper/SpiralDreamBooster.attributes.description.pathColor=The hexadecimal color code for the color of this booster's path.
+
 # Summit Gem
 entities.CommunalHelper/CustomSummitGem.placements.name.summit_gem=Custom Summit Gem
 entities.CommunalHelper/CustomSummitGem.attributes.description.index=Determines the texture and sound used for this gem (clamped within 0 and 7). Must be unique within a room. To use a custom texture, put it at Graphics/Atlases/Gameplay/collectables/summitgems/$mapSID/$roomName/$index.
@@ -204,10 +228,10 @@ entities.CommunalHelper/TimedTriggerSpikesUp.attributes.description.WaitForPlaye
 entities.CommunalHelper/TimedTriggerSpikesRight.attributes.description.WaitForPlayer=Setting this to true will make the spike only come up after the player leaves the spike area. Useful for when you need to return to a space in a time limit.
 entities.CommunalHelper/TimedTriggerSpikesDown.attributes.description.WaitForPlayer=Setting this to true will make the spike only come up after the player leaves the spike area. Useful for when you need to return to a space in a time limit.
 entities.CommunalHelper/TimedTriggerSpikesLeft.attributes.description.WaitForPlayer=Setting this to true will make the spike only come up after the player leaves the spike area. Useful for when you need to return to a space in a time limit.
-entities.CommunalHelper/TimedTriggerSpikesUp.attributes.description.Grouped=Setting this to "Grouped" will trigger all spikes in the line if any spike in the line is triggered. "Grouped" requires Max's Helping Hand to work, and will throw an error in its absence.
-entities.CommunalHelper/TimedTriggerSpikesRight.attributes.description.Grouped=Setting this to "Grouped" will trigger all spikes in the line if any spike in the line is triggered. "Grouped" requires Max's Helping Hand to work, and will throw an error in its absence.
-entities.CommunalHelper/TimedTriggerSpikesDown.attributes.description.Grouped=Setting this to "Grouped" will trigger all spikes in the line if any spike in the line is triggered. "Grouped" requires Max's Helping Hand to work, and will throw an error in its absence.
-entities.CommunalHelper/TimedTriggerSpikesLeft.attributes.description.Grouped=Setting this to "Grouped" will trigger all spikes in the line if any spike in the line is triggered. "Grouped" requires Max's Helping Hand to work, and will throw an error in its absence.
+entities.CommunalHelper/TimedTriggerSpikesUp.attributes.description.Grouped=Setting this to "Grouped" will trigger all spikes in the line if any spike in the line is triggered. "Grouped" requires Maddie's Helping Hand to work, and will throw an error in its absence.
+entities.CommunalHelper/TimedTriggerSpikesRight.attributes.description.Grouped=Setting this to "Grouped" will trigger all spikes in the line if any spike in the line is triggered. "Grouped" requires Maddie's Helping Hand to work, and will throw an error in its absence.
+entities.CommunalHelper/TimedTriggerSpikesDown.attributes.description.Grouped=Setting this to "Grouped" will trigger all spikes in the line if any spike in the line is triggered. "Grouped" requires Maddie's Helping Hand to work, and will throw an error in its absence.
+entities.CommunalHelper/TimedTriggerSpikesLeft.attributes.description.Grouped=Setting this to "Grouped" will trigger all spikes in the line if any spike in the line is triggered. "Grouped" requires Maddie's Helping Hand to work, and will throw an error in its absence.
 entities.CommunalHelper/TimedTriggerSpikesUp.attributes.description.Rainbow=Makes these spikes rainbow.
 entities.CommunalHelper/TimedTriggerSpikesRight.attributes.description.Rainbow=Makes these spikes rainbow.
 entities.CommunalHelper/TimedTriggerSpikesDown.attributes.description.Rainbow=Makes these spikes rainbow.
@@ -277,6 +301,7 @@ entities.CommunalHelper/DreamFallingBlock.attributes.description.chainOutline=Wh
 entities.CommunalHelper/DreamFallingBlock.attributes.description.indicator=Renders below the block a dark transparent rectangle of the path it is going to take when it starts to fall. This indicator might not be visible against dark backgrounds.
 entities.CommunalHelper/DreamFallingBlock.attributes.description.indicatorAtStart=Makes the indicator (if enabled) visible before the block is triggered.
 entities.CommunalHelper/DreamFallingBlock.attributes.description.quickDestroy=Makes this Dream Falling Block shatter a little faster.
+entities.CommunalHelper/DreamFallingBlock.attributes.description.chainTexture=The texture for this Dream Falling Block's chain (if chained).
 
 # Dream Switch Gate
 entities.CommunalHelper/DreamSwitchGate.placements.name.dream_switch_gate=Dream Switch Gate
@@ -353,6 +378,7 @@ entities.CommunalHelper/ConnectedMoveBlock.placements.name.flag_controlled=Conne
 entities.CommunalHelper/ConnectedMoveBlock.attributes.description.moveSpeed=The speed at which the block moves (accepts any number).
 entities.CommunalHelper/ConnectedMoveBlock.attributes.description.direction=The direction in which the Connected Move Block should travel.
 entities.CommunalHelper/ConnectedMoveBlock.attributes.description.customBlockTexture=The path to the custom texture for the Connected Block, starting from Graphics/Atlases/Gameplay/objects/. A template is provided in Mods/CommunalHelper/Graphics/Atlases/Gameplay/objects/CommunalHelper/customConnectedBlock. The filename should NOT include the file extension (.png).\nFor adding arrow textures, name the texture for tiles "tileset.png", the arrow textures "arrowXX.png" (00 thru 08), and the breaking "X" sprite as "x.png".
+entities.CommunalHelper/ConnectedMoveBlock.attributes.description.customSoundEffect=The path to the custom sound effect for the Connected Block.
 entities.CommunalHelper/ConnectedMoveBlock.attributes.description.idleColor=The color of the arrow when not moving.
 entities.CommunalHelper/ConnectedMoveBlock.attributes.description.pressedColor=The color of the arrow when moving.
 entities.CommunalHelper/ConnectedMoveBlock.attributes.description.breakColor=The color of the arrow when breaking.
@@ -402,6 +428,7 @@ entities.CommunalHelper/DashCollisionPanel.placements.name.left=Dash Collision P
 entities.CommunalHelper/DashCollisionPanel.placements.name.right=Dash Collision Panel (Right)
 entities.CommunalHelper/DashCollisionPanel.attributes.description.orientation=The way this Dash Collision Panel faces.
 entities.CommunalHelper/DashCollisionPanel.attributes.description.dashCollideResult=The type of collision result returned when the player dashes into the solid on which this panel is placed.
+entities.CommunalHelper/DashCollisionPanel.attributes.description.overrideAllowStaticMovers=Enable a hack that allows this entity to attach to SolidTiles, among other things.
 
 # Dream Tunnel Entry
 entities.CommunalHelper/DreamTunnelEntry.placements.name.up=Dream Tunnel Entry (Up)
@@ -435,6 +462,7 @@ entities.CommunalHelper/ChainedKevin.attributes.description.chainLength=The leng
 entities.CommunalHelper/ChainedKevin.attributes.description.direction=The only direction in which this block will travel.
 entities.CommunalHelper/ChainedKevin.attributes.description.centeredChain=Renders only one chain at the horizontal or vertical center of this block, depending on the direction.
 entities.CommunalHelper/ChainedKevin.attributes.description.chainOutline=Whether the chain of this block should have a black outline.
+entities.CommunalHelper/ChainedKevin.attributes.description.chainTexture=The texture for this Chained Kevin's chain.
 
 # Chained Falling Block
 entities.CommunalHelper/ChainedFallingBlock.placements.name.chained_falling_block=Falling Block (Chained)
@@ -446,11 +474,13 @@ entities.CommunalHelper/ChainedFallingBlock.attributes.description.centeredChain
 entities.CommunalHelper/ChainedFallingBlock.attributes.description.chainOutline=Whether the chain of this block should have a black outline.
 entities.CommunalHelper/ChainedFallingBlock.attributes.description.indicator=Renders below the block a dark transparent rectangle of the path it is going to take when it starts to fall. This indicator might not be visible against dark backgrounds.
 entities.CommunalHelper/ChainedFallingBlock.attributes.description.indicatorAtStart=Makes the indicator (if enabled) visible before the block is triggered.
+entities.CommunalHelper/ChainedFallingBlock.attributes.description.chainTexture=The texture for this Falling Block's chain.
 
 # Chain
 entities.CommunalHelper/Chain.placements.name.chain=Chain
 entities.CommunalHelper/Chain.attributes.description.outline=Whether this chain has an outline (black).
 entities.CommunalHelper/Chain.attributes.description.extraJoints=The additional 'chain nodes' this chain has. Used to make the chain longer without distancing the endpoints of the chain any further away from eachother.
+entities.CommunalHelper/Chain.attributes.description.texture=This chain's texture.
 
 # Core Mode Music Controller
 entities.CommunalHelper/CoreModeMusicController.placements.name.enable=Core Mode Music Controller
@@ -592,6 +622,160 @@ entities.CommunalHelper/LightningController.attributes.description.probability=A
 entities.CommunalHelper/LightningController.attributes.description.color=The color of the lightning strikes.
 entities.CommunalHelper/LightningController.attributes.description.flashColor=The color of the flash.
 
+# UFO
+entities.CommunalHelper/UFO.placements.name.ufo=UFO
+entities.CommunalHelper/UFO.placements.description.ufo=Flings the player and holdables when below, before moving to the next position.
+entities.CommunalHelper/UFO.attributes.description.raySizeX=The width of the beam within which entities are flung.
+entities.CommunalHelper/UFO.attributes.description.raySizeY=The height of the beam within which entities are flung.
+
+# Move Block Group
+entities.CommunalHelper/MoveBlockGroup.placements.name.move_block_group=Move Block Group
+entities.CommunalHelper/MoveBlockGroup.attributes.description.color=The display color of this Move Block group.
+entities.CommunalHelper/MoveBlockGroup.attributes.description.syncActivation=Whether all Move Blocks from this group are bound to activate simultaneously.
+entities.CommunalHelper/MoveBlockGroup.attributes.description.respawnBehavior=Dictates how Move Blocks respawn within this group.\n* Immediate: the Move Blocks respawn immediately, like they normally do outside of a group.\n* Simultaneous: all Move Blocks from this group must have first broken in order for them to respawn.\n* Sequential: each Move Block will only respawn once all the ones that came before it in the group have respawned.   
+
+# Aero Block Flying
+entities.CommunalHelper/AeroBlockFlying.placements.name.active=Flying Aero Block
+entities.CommunalHelper/AeroBlockFlying.placements.name.inactive=Flying Aero Block (Initially Inactive)
+entities.CommunalHelper/AeroBlockFlying.attributes.description.inactive=Whether this block should spawn as inactive - that means it's not flying. It will activate once the player touch it.\nIMPORTANT: if this option is enabled, the first node of this block will define its initial position.
+entities.CommunalHelper/AeroBlockFlying.attributes.description.travelSpeed=The speed (in px/sec) at which this block's target moves. Note that this does not directly affect the exact speed of the block, but its target point, which the block constantly smoothly approaches.\nThis field is only useful is this entity has at least one node.
+entities.CommunalHelper/AeroBlockFlying.attributes.description.travelMode=The type of movement this block will execute.\n  * Loop: the block goes to each of its nodes sequentially, and loops around once the last one is reached.\n  * Back and Forth: the block goes through each of its nodes sequencially, and then in reverse, and so on forever.\n  * With Player: The block does not move until the player rides it. When the player is riding the block, the block moves towards the end of its sequence of nodes, and stops at the end. If the player leaves off the block, it starts going backwards to its starting position.\n  * With Player Once: Same as "With Player", except the block turns off at the end of its sequence, and becomes unsable (stops flying).
+entities.CommunalHelper/AeroBlockFlying.attributes.description.startColor=The starting color of this block's progress bar. Only useful when this block has mode WithPlayer or WithPlayerOnce enabled.
+entities.CommunalHelper/AeroBlockFlying.attributes.description.endColor=The ending color of this block's progress bar. Only useful when this block has mode WithPlayer or WithPlayerOnce enabled.
+
+# Aero Block Charged
+entities.CommunalHelper/AeroBlockCharged.placements.name.aero_block_charged=Charged Aero Block
+entities.CommunalHelper/AeroBlockCharged.attributes.description.buttonSequence=Text that describes how the buttons of this block are shown and hidden as the block moves to each node. It is parsed by the entity, so this field must follow a specified format:\n\nFor each node, you can have the LEFT, RIGHT, and TOP buttons enabled or not.\nTo combine multiple buttons, use the + operator. For instance: LEFT+RIGHT represents both the left and right button enabled, while the top one is off.\n\nThere are other keywords that represent multiple buttons at once: HORIZONTAL, VERTICAL, ALL, NONE:\n  * HORIZONTAL = LEFT + RIGHT\n  * VERTICAL = TOP\n  * ALL = TOP + LEFT + RIGHT\n  * NONE: (no buttons)\n\nIf you have multiple nodes, you must use the -> operator (a hyphen followed by a right-chevron, aka. "greater than") to indicate that whatever follows is for the next node.\nFor instance: LEFT+RIGHT -> TOP will start the block with the left and right buttons on, and when the blocks moves at the next node, only the top button will be on.\nYou don't necessarily have to write as many -> transitions as nodes this entity has, because the button sequence will just loop back if it reaches its end before the block ends its node sequence.\nYou must not have more transitions than nodes. In such a case, the extra button combinations are discarded.\n\nEvery word can be lowercase (they are case-insensitive).\nOther words that are not LEFT, RIGHT, TOP, HORIZONTAL, VERTICAL, ALL, NONE, will be dismissed and a warning will be printed in the log.\nLeading & trailing whitespaces are discarded, so feel free to format the string the way you prefer.\n\nHere are more examples of valid sequences:\n  * LEFT\n  * HORIZONTAL -> TOP + LEFT\n  * right->left->tOP->All\n  * ALL -> none + LEFT+right -> rIgHt\n\nCheck the log if something goes wrong, you'll find the error messages there.
+entities.CommunalHelper/AeroBlockCharged.attributes.description.hover=Whether this block has a hovering "floating" movement to it. If disable, the block stays in place until it needs to move.
+entities.CommunalHelper/AeroBlockCharged.attributes.description.loop=Whether this block's sequence has no ending. When the last node is reached, it loops back around to the initial position.
+entities.CommunalHelper/AeroBlockCharged.attributes.description.activeColor=This block's button and screen particles color when it is active (flying). 
+entities.CommunalHelper/AeroBlockCharged.attributes.description.inactiveColor=This block's button colors when it is inactive.
+
+# Aero Block Slingshot
+entities.CommunalHelper/AeroBlockSlingshot.placements.name.normal=Slingshot Aero Block
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.launchTime=The time in seconds that it takes the block to return after being released. Defaults to 0.5.
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.cooldownTime=The time in seconds before the player can push the block again after being reset. Defaults to 0.5.
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.setTime=The time in seconds that the player must stop pushing to prepare the block to launch. Defaults to 0.2.
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.delayTime=The time in seconds after the block is set that the launch will occur. Defaults to 0.2.
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.pushSpeed=The speed in pixels-per-second that the player can push the block. Defaults to 35.
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.pushActions=The actions that the player may perform on the block. Options are None, Push, Pull, or Both. Defaults to Push.
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.allowAdjustments=If false, the player cannot move the block once it has been "set" and the timer has started. If true, the player can adjust the block's position while the timer counts down, and it will reset the timer. Defaults to true.
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.startColor=The color to tint the progress bar when the player pushes the block from the idle state. This will be lerped to endColor as the player continues to push.
+entities.CommunalHelper/AeroBlockSlingshot.attributes.description.endColor=The color to tint the progress bar when the player pushes the block to the end of the track.
+
+# Shapeshifter
+entities.CommunalHelper/Shapeshifter.placements.name.shapeshifter=Shapeshifter
+entities.CommunalHelper/Shapeshifter.attributes.description.voxelWidth=The width in tiles of the 3D voxel.
+entities.CommunalHelper/Shapeshifter.attributes.description.voxelHeight=The height in tiles of the 3D voxel.
+entities.CommunalHelper/Shapeshifter.attributes.description.voxelDepth=The depth in tiles of the 3D voxel.
+entities.CommunalHelper/Shapeshifter.attributes.description.model=A string representation of a 3D-array of characters corresponding to tile IDs. The size of this array is width * height * depth.\nIf this field isn't complete (i.e. its length isn't width * height * depth), the missing character will be implied as '0', or you can set the default value in the `defaultTile` field (useful for filling the whole 3D-grid if you want to make a trivial 3D block).\n\nYou don't have to fill this out manually by yourself. Use Communal Helper's voxel editor by using the ch_make_voxel or ch_fill_voxel command:\n  * ch_make_voxel <width> <height> <depth> [model]\n  * ch_fill_voxel <width> <height> <depth> [model]\n\nRead more on the Communal Helper wiki, and watch the tutorial video for an explanation of how you can use this entity.
+entities.CommunalHelper/Shapeshifter.attributes.description.startSound=The sound that plays when this block starts moving along a path.
+entities.CommunalHelper/Shapeshifter.attributes.description.finishSound=The sound that plays when this block stops moving.
+entities.CommunalHelper/Shapeshifter.attributes.description.startShake=The strength of the shake when this block starts moving. Also plays short medium rumble on controllers.\nLeave at 0.0 for no shake nor rumble.
+entities.CommunalHelper/Shapeshifter.attributes.description.finishShake=The strength of the shake when this block stops moving. Also plays short medium rumble on controllers.\nLeave at 0.0 for no shake nor rumble.
+entities.CommunalHelper/Shapeshifter.attributes.description.rainbowMix=A percentage (0.0 to 1.0) describing how rainbow the block should appear when moving. This helps to recognize shapeshifters that are currently moving (and if rotating, then uncollidable).\nLeave at 0.0 for no rainbowness. The more this value is close to 1.0, the more rainbow the block will appear, until you cannot see its texture, but only its shape (rainbowed out).
+entities.CommunalHelper/Shapeshifter.attributes.description.defaultTile=The default tile for this model.
+
+# Shapeshifter Path
+entities.CommunalHelper/ShapeshifterPath.placements.name.shapeshiter_path=Shapeshifter Path
+entities.CommunalHelper/ShapeshifterPath.attributes.description.duration=How long it takes for shapeshifters to travel along this path.
+entities.CommunalHelper/ShapeshifterPath.attributes.description.easer=The easing mode that atler the feel & smoothness of the movement of blocks taking this path.
+entities.CommunalHelper/ShapeshifterPath.attributes.description.rotateYaw=How much quarter turns about the YAW axis (the Y axis) the blocks taking this path will make.
+entities.CommunalHelper/ShapeshifterPath.attributes.description.rotatePitch=How much quarter turns about the PITCH axis (the X axis) the blocks taking this path will make.
+entities.CommunalHelper/ShapeshifterPath.attributes.description.rotateRoll=How much quarter turns about the ROLL axis (the Z axis) the blocks taking this path will make.
+entities.CommunalHelper/ShapeshifterPath.attributes.description.quakeTime=The duration (in seconds) of the initial shaking sequence that plays before this block starts moving. Leave at 0.0 for no initial shaking, i.e. instant movement.\nThe initial shaking sequence makes the block slightly shaky for however amount of seconds you specify, and then starts moving.\nIt also plays a continuous shaking sound.
+entities.CommunalHelper/ShapeshifterPath.attributes.description.fakeoutTime=How much time (in seconds) should this block spend in the fakeout state.\nIf this value is non-zero, the block will start moving but stop at the beginning of the movement. After the amount of seconds specified in this field, it will resume its movement along the path.
+entities.CommunalHelper/ShapeshifterPath.attributes.description.fakeoutDistance=How far away (in pixels) the block should stop for the fakeout state (only useful if fakeoutTime is non-zero).\nNote that the fakeout movement still follows the path.
+
+# Elytra Dash Block
+entities.CommunalHelper/ElytraDashBlock.placements.name.elytra_dash_block=Elytra Dash Block
+entities.CommunalHelper/ElytraDashBlock.attributes.description.tiletype=The tile type of this block.
+entities.CommunalHelper/ElytraDashBlock.attributes.description.blendin=Whether this block blends in with foreground tiles.
+entities.CommunalHelper/ElytraDashBlock.attributes.description.permanent=Whether this block should disappear permanently once broken.
+entities.CommunalHelper/ElytraDashBlock.attributes.description.requiredSpeed=The required speed in px/sec by the player in the elytra state.
+
+# Elytra Boost Ring
+entities.CommunalHelper/ElytraBoostRing.placements.name.unidirectional=Elytra Boost Ring (Unidirectional)
+entities.CommunalHelper/ElytraBoostRing.placements.name.bidirectional=Elytra Boost Ring (Bidirectional)
+entities.CommunalHelper/ElytraBoostRing.attributes.description.speed=The value in px/sec that is assigned to the player's speed.
+entities.CommunalHelper/ElytraBoostRing.attributes.description.duration=How long (in seconds) the player is locked in the elytra boost state. While in this state, the player maintains the angle at which it was boosted, and maintains its speed as well.\nThose cannot be changed until the specified time in this field has elapsed.
+entities.CommunalHelper/ElytraBoostRing.attributes.description.refill=Whether the player's elytra should be refilled when going through this ring.
+entities.CommunalHelper/ElytraBoostRing.attributes.description.bidirectional=Whether this ring can boost the player in both directions. If disabled, the player is always boosted in the direction that this ring points to. 
+
+# Elytra Refill Ring
+entities.CommunalHelper/ElytraRefillRing.placements.name.elytra_refill_ring=Elytra Refill Ring
+
+# Elytra Stop Ring
+entities.CommunalHelper/ElytraStopRing.placements.name.elytra_stop_ring=Elytra Stop Ring
+entities.CommunalHelper/ElytraStopRing.attributes.description.refill=Whether the player's elytra should be refilled when going through this ring.
+
+# Elytra Note Ring
+entities.CommunalHelper/ElytraNoteRing.placements.name.elytra_note_ring=Elytra Note Ring
+entities.CommunalHelper/ElytraNoteRing.attributes.description.semitone=The note to play when this ring is crossed. You can input your own integer value if you want to go above or below the range available in the dropdown options.\n0 is C4, input negative integer to go below.
+
+# [Strawberry Jam] Bullet Time Controller
+entities.CommunalHelper/SJ/BulletTimeController.placements.name.controller=Bullet Time Controller [Strawberry Jam]
+entities.CommunalHelper/SJ/BulletTimeController.placements.description.controller=Slows down time while the player has dashes.
+entities.CommunalHelper/SJ/BulletTimeController.attributes.description.timerate=The timerate that the game should run at while the player has dashes, as a multiplier of normal speed.
+entities.CommunalHelper/SJ/BulletTimeController.attributes.description.flag=If present, time will only be affected if this flag is set.
+entities.CommunalHelper/SJ/BulletTimeController.attributes.description.minDashes=The number of dashes required for time to be slowed down.
+
+# [Strawberry Jam] Photosensitive Flag Controller
+entities.CommunalHelper/SJ/PhotosensitiveFlagController.placements.name.controller=Photosensitive Flag Controller [Strawberry Jam]
+entities.CommunalHelper/SJ/PhotosensitiveFlagController.placements.description.controller=Sets a flag when photosensitive mode is enabled.
+entities.CommunalHelper/SJ/PhotosensitiveFlagController.attributes.description.flag=The flag to set.
+
+# [Strawberry Jam] Grab Temple Gate
+entities.CommunalHelper/SJ/GrabTempleGate.placements.name.open=Grab Temple Gate (Open) [Strawberry Jam]
+entities.CommunalHelper/SJ/GrabTempleGate.placements.name.closed=Grab Temple Gate (Closed) [Strawberry Jam]
+entities.CommunalHelper/SJ/GrabTempleGate.attributes.description.closed=Whether the gate should initially be closed. This causes this gate to open when others close, and vice-versa.
+
+# [Strawberry Jam] Loop Block
+entities.CommunalHelper/SJ/LoopBlock.placements.name.loop_block=Loop Block [Strawberry Jam]
+entities.CommunalHelper/SJ/LoopBlock.attributes.description.edgeThickness=How thick this loop block's edges are, measured in tiles.
+entities.CommunalHelper/SJ/LoopBlock.attributes.description.color=The hexadecimal color code for this block's tint.
+entities.CommunalHelper/SJ/LoopBlock.attributes.description.texture=The path to this loop block's texture in the Gameplay atlas. Leave at default value or empty for the default texture (original texture from Strawberry Jam).
+
+# [Strawberry Jam] Solar Elevator
+entities.CommunalHelper/SJ/SolarElevator.placements.name.solar_elevator=Solar Elevator [Strawberry Jam]
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.distance=The height at which this elevator goes. 
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.time=The time in seconds this elevator takes to move from one floor to the other.
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.delay=The time in seconds waited before movement.
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.bgDepth=The depth that the background of the elevator will be displayed at.
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.oneWay=Whether this elevator is only used once.
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.startPosition=Determines which of the two floors is the default.\n- Closest: the default floor is the one closest to the player when the entity is created.\n- Bottom: the default floor is always the bottom one.\n- Top: the default floor is always the top one.
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.moveSfx=The sound played during movement. Preferably a looped sound for arbitrary duration.
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.haltSfx=The sound played when the elevator stops.
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.requiresHoldable=Whether this elevator can only be activated if it can carry a holdable object (for instance, a Theo crystal). If this option is activated, the bubble UI will display a message to indicate that this elevator requires a holdable. 
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.holdableHintDialog=The dialog ID of the shown message, only useful if this elevator requires a holdable.
+entities.CommunalHelper/SJ/SolarElevator.attributes.description.reskinDirectory=The path to the directory that contains custom textures for this elevator, starting from "Graphics/Atlases/Gameplay/". Leave empty for default appearance.\nThe directory must contain a "front.png", "back.png", and "rails.png". Missing textures will fall back to the default textures. If something isn't working, check the Celeste console or log.txt for missing texture warnings.
+
+# [Strawberry Jam] Exploding Strawberry
+entities.CommunalHelper/SJ/ExplodingStrawberry.placements.name.strawberry=Exploding Strawberry [Strawberry Jam]
+entities.CommunalHelper/SJ/ExplodingStrawberry.placements.description.strawberry=Strawberry that explodes when a pufferfish explodes.
+
+# [Strawberry Jam] Expiring Dash Refill
+entities.CommunalHelper/SJ/ExpiringDashRefill.placements.name.expiring_dash_refill=Expiring Dash Refill [Strawberry Jam]
+entities.CommunalHelper/SJ/ExpiringDashRefill.attributes.description.oneUse=Whether this refill can only be used once.
+entities.CommunalHelper/SJ/ExpiringDashRefill.attributes.description.dashExpirationTime=The amount of time given before the dash is revoked if not used.
+entities.CommunalHelper/SJ/ExpiringDashRefill.attributes.description.hairFlashThreshold=The threshold ratio that determines when the warning flash begins (0 - 1).
+
+# [Strawberry Jam] Air Time Music Controller
+entities.CommunalHelper/SJ/AirTimeMusicController.placements.name.air_time_music_controller=Airtime Music Controller [Strawberry Jam]
+entities.CommunalHelper/SJ/AirTimeMusicController.attributes.description.activationThreshold=The amount of airtime in seconds required before the music parameter is enabled.
+entities.CommunalHelper/SJ/AirTimeMusicController.attributes.description.musicParam=The music parameter that will be adjusted by this controller. Its value will be set to 1.0 when the airtime threshold is reached, and is 0.0 by default or when disabled.
+
+# [Strawberry Jam] Wormhole Booster
+entities.CommunalHelper/SJ/WormholeBooster.placements.name.booster=Wormhole Booster [Strawberry Jam]
+entities.CommunalHelper/SJ/WormholeBooster.placements.description.booster=Booster that teleports you to the nearest of its kind, or kills you if none exist.
+entities.CommunalHelper/SJ/WormholeBooster.attributes.description.deathColor=The color to use for the booster when it becomes deadly.
+entities.CommunalHelper/SJ/WormholeBooster.attributes.description.instantCamera=Whether the camera should transition instantly or not.
+
+# [Strawberry Jam] Show Hitbox Trigger
+triggers.CommunalHelper/SJ/ShowHitboxTrigger.placements.name.trigger=Show Hitbox [Strawberry Jam]
+triggers.CommunalHelper/SJ/ShowHitboxTrigger.placements.description.trigger=Shows the hitboxes of specified entities while inside.
+triggers.CommunalHelper/SJ/ShowHitboxTrigger.attributes.description.typeNames=A comma-separated list of class names of the entities to show hitboxes when player is inside the trigger.\nExample: Celeste.Player,Celeste.CrystalStaticSpinner,Refill
+
 # Dash State Trigger
 triggers.CommunalHelper/DashStateTrigger.placements.name.trigger=Dash State
 triggers.CommunalHelper/DashStateTrigger.attributes.description.dashState=The dash state to set.
@@ -648,6 +832,24 @@ triggers.CommunalHelper/CloudscapeLightningConfigurationTrigger.attributes.descr
 # Stop Lightning Controller Trigger
 triggers.CommunalHelper/StopLightningControllerTrigger.placements.name.trigger=Stop Lightning Controller
 
+# Configure Elytra Trigger
+triggers.CommunalHelper/ConfigureElytraTrigger.placements.name.yes=Enable Elytra
+triggers.CommunalHelper/ConfigureElytraTrigger.placements.name.yes_infinite=Enable Elytra (Infinite)
+triggers.CommunalHelper/ConfigureElytraTrigger.placements.name.no=Disable Elytra
+triggers.CommunalHelper/ConfigureElytraTrigger.attributes.description.allow=Whether the player can deploy its elytra after going through the trigger.\nThe elytra is deployed with a keybind configured in mod settings.\nDefault is W on keyboard, and Left Shoulder on controller.
+triggers.CommunalHelper/ConfigureElytraTrigger.attributes.description.infinite=If this trigger enables the elytra, this option will make it so that deploying the elytra does not consume a dash. Note that this can potentially be used to build infinite height (over long distances).
+
+# Follow Shapeshifter Path Trigger
+triggers.CommunalHelper/FollowShapeshifterPathTrigger.placements.name.follow_path=Follow Shapeshifter Path
+triggers.CommunalHelper/FollowShapeshifterPathTrigger.attributes.description.once=Whether this trigger can only be used once. If enabled, this trigger becomes uncollidable as soon it is stepped into.
+triggers.CommunalHelper/FollowShapeshifterPathTrigger.attributes.description.shapeshifterID=A comma-separated list of integer entity IDs of the Shapeshifter entities to move. Invalid values are discared, and warnings will be printed in the log.\nYou can also use this field to input in a single Shapeshifter entity ID.\nThis field is required.
+triggers.CommunalHelper/FollowShapeshifterPathTrigger.attributes.description.pathID=Optional field for specifying which path the Shapeshifter(s) will be borrowing. If this is left at -1, each Shapeshifter will look at the first path it finds in their bounds (rectangle).\nImportant: note that the movement along a path for a Shapeshifter is relative. The blocks don't teleport to the beginning of the path, but rather, they apply the movement of the path they follow, starting at their initial position.\nNote also that shapeshifters that are told to move while they are already moving will simply ignore the request, and keep moving along the path they were already following.
+
+# Solar Elevator Level Trigger
+triggers.CommunalHelper/SolarElevatorLevelTrigger.placements.name.trigger=Set Solar Elevator Level
+triggers.CommunalHelper/SolarElevatorLevelTrigger.attributes.description.elevatorID=The entity ID of the elevator to modify in this room. (integer)
+triggers.CommunalHelper/SolarElevatorLevelTrigger.attributes.description.position=Determines which of the two floors the elevator is sent to.\n- Closest: the one closest to the player when entering the trigger.\n- Bottom: always the bottom floor.\n- Top: always the top floor.
+
 # Cloudscape
 style.effects.CommunalHelper/Cloudscape.name=Cloudscape
 style.effects.CommunalHelper/Cloudscape.description.seed=The RNG seed that this cloudscape instance will be generated with.
@@ -673,3 +875,11 @@ style.effects.CommunalHelper/Cloudscape.description.outerDensity=A number betwee
 style.effects.CommunalHelper/Cloudscape.description.innerRotation=The rotational speed at the middle.
 style.effects.CommunalHelper/Cloudscape.description.outerRotation=The rotational speed at the edge.
 style.effects.CommunalHelper/Cloudscape.description.rotationExponent=A number between 0 and 2 that describes the interpolation of the rotational speed between the inner and outer rings. 1 is linear, 0 makes the value approach the outer target value faster, 2 makes the value approach the outer target value sooner.\nThis is hard to describe.
+style.effects.CommunalHelper/Cloudscape.description.hasBackgroundColor=Whether the background should be filled with the `bgColor` color specified. Disabling this makes it so that styleground layers below this Cloudscape instance can be seen.
+style.effects.CommunalHelper/Cloudscape.description.additive=Whether this Cloudscape instance renders onto the screen with the additive blending mode.
+
+# BetaCube
+style.effects.CommunalHelper/BetaCube.name=Beta Cube
+style.effects.CommunalHelper/BetaCube.description.texture=The path to the texture used for the Beta Cube backdrop.
+style.effects.CommunalHelper/BetaCube.description.colors=A comma-separated list of hexadecimal color codes for the cube. Each vertex of the cube will take one of these colors and smoothly interpolate between them as time passes on.
+style.effects.CommunalHelper/BetaCube.description.scale=A positive real value that sets the cube's size.
