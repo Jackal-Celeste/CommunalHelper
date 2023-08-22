@@ -13,18 +13,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Download Everest stripped lib
-      uses: coloursofnoise/get-azure-pipelines-artifact@v0.0.3
+    - name: Download Everest lib-stripped release asset from GitHub
+      uses: duhow/download-github-release-assets@v1
       with:
         repository: EverestAPI/Everest
-        definitionId: 3
-        artifact: lib-stripped
-        reasonFilter: 'individualCI'
+        release-id: latest
+        files: lib-stripped.zip
+
+    - name: Unzip lib-stripped.zip
+      run: unzip lib-stripped.zip
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
 
     - name: Restore with .NET Core
       run: dotnet restore
@@ -50,7 +52,7 @@ jobs:
         path: src/bin/Debug/net452
 
     - name: Create mod zip
-      run: zip -qq -r CommunalHelper.zip Ahorn/* Loenn Audio Dialog Graphics src/bin/Debug/net452 everest.yaml
+      run: zip -qq -r CommunalHelper.zip Ahorn/* Loenn Audio Dialog Graphics Effects/CommunalHelper/*.cso src/bin/Debug/net452 everest.yaml
 
     - name: Create Release
       id: release

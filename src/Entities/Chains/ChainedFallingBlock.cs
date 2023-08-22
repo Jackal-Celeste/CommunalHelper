@@ -13,8 +13,12 @@ public class ChainedFallingBlock : Solid
     private readonly bool climbFall;
     private bool held;
 
+
     public readonly float chainStopY;
     private readonly float startY;
+
+    private readonly MTexture chainTexture;
+
     private readonly bool centeredChain;
     private readonly bool chainOutline;
 
@@ -26,9 +30,9 @@ public class ChainedFallingBlock : Solid
 
 
     public ChainedFallingBlock(EntityData data, Vector2 offset)
-        : this(data.Position + offset, data.Width, data.Height, data.Char("tiletype", '3'), data.Bool("climbFall", true), data.Bool("behind"), data.Int("fallDistance"), data.Bool("centeredChain"), data.Bool("chainOutline", true), data.Bool("indicator"), data.Bool("indicatorAtStart")) { }
+        : this(data.Position + offset, data.Width, data.Height, data.Char("tiletype", '3'), data.Bool("climbFall", true), data.Bool("behind"), data.Int("fallDistance"), data.Bool("centeredChain"), data.Bool("chainOutline", true), data.Bool("indicator"), data.Bool("indicatorAtStart"), data.Attr("chainTexture", Chain.DEFAULT_CHAIN_PATH)) { }
 
-    public ChainedFallingBlock(Vector2 position, int width, int height, char tileType, bool climbFall, bool behind, int maxFallDistance, bool centeredChain, bool chainOutline, bool indicator, bool indicatorAtStart)
+    public ChainedFallingBlock(Vector2 position, int width, int height, char tileType, bool climbFall, bool behind, int maxFallDistance, bool centeredChain, bool chainOutline, bool indicator, bool indicatorAtStart, string chainTexturePath = Chain.DEFAULT_CHAIN_PATH)
         : base(position, width, height, safe: false)
     {
         this.climbFall = climbFall;
@@ -41,6 +45,8 @@ public class ChainedFallingBlock : Solid
         this.indicator = indicator;
         this.indicatorAtStart = indicatorAtStart;
         pathLerp = Util.ToInt(indicatorAtStart);
+
+        chainTexture = GFX.Game.GetOrDefault(chainTexturePath, Chain.DefaultChain);
 
         Calc.PushRandom(Calc.Random.Next());
         Add(tiles = GFX.FGAutotiler.GenerateBox(tileType, width / 8, height / 8).TileGrid);
@@ -239,6 +245,7 @@ public class ChainedFallingBlock : Solid
         }
 
         if (centeredChain)
+
         {
             Chain.DrawChainLine(new Vector2(origPosition.X + (Width / 2f), origPosition.Y), new Vector2(X + (Width / 2f), Y), chainOutline);
         }
@@ -246,6 +253,7 @@ public class ChainedFallingBlock : Solid
         {
             Chain.DrawChainLine(new Vector2(origPosition.X + 3, origPosition.Y), new Vector2(X + 3, Y), chainOutline);
             Chain.DrawChainLine(new Vector2(origPosition.X + Width - 4, origPosition.Y), new Vector2(X + Width - 4, Y), chainOutline);
+
         }
 
         base.Render();

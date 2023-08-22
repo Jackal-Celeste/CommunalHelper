@@ -32,13 +32,17 @@ public class CommunalHelperSettings : EverestModuleSettings
 
     public void CreateAlwaysActiveDreamRefillChargeEntry(TextMenu menu, bool inGame)
     {
+        var featherModeOption = new TextMenu.OnOff(Dialog.Clean("SETTINGS_DREAMTUNNEL_FEATHERMODE"), _dreamDashFeatherMode)
+            .Change(v => _dreamDashFeatherMode = v);
+
+        var ignoreCollectiblesOption = new TextMenu.OnOff(Dialog.Clean("SETTINGS_DREAMTUNNEL_IGNORECOLLECTIBLES"), _dreamTunnelIgnoreCollidables)
+            .Change(v => _dreamTunnelIgnoreCollidables = v);
+
         TextMenuExt.OptionSubMenu subMenu = new TextMenuExt.OptionSubMenu(Dialog.Clean("SETTINGS_DREAMTUNNEL_ALWAYSACTIVE"))
             .Add(Dialog.Clean("OPTIONS_OFF"))
-            .Add(Dialog.Clean("OPTIONS_ON"),
-                new TextMenu.OnOff(Dialog.Clean("SETTINGS_DREAMTUNNEL_FEATHERMODE"), _dreamDashFeatherMode),
-                new TextMenu.OnOff(Dialog.Clean("SETTINGS_DREAMTUNNEL_IGNORECOLLECTIBLES"), _dreamTunnelIgnoreCollidables)
-            )
-            .Change(i => AlwaysActiveDreamRefillCharge = i == 0 ? false : true);
+            .Add(Dialog.Clean("OPTIONS_ON"), featherModeOption, ignoreCollectiblesOption)
+            .Change(i => AlwaysActiveDreamRefillCharge = i == 1)
+            .SetInitialSelection(Util.ToInt(AlwaysActiveDreamRefillCharge));
 
         menu.Add(subMenu);
     }
@@ -57,4 +61,9 @@ public class CommunalHelperSettings : EverestModuleSettings
 
     [DefaultButtonBinding(Buttons.RightShoulder, Keys.Z)]
     public ButtonBinding ActivateFlagController { get; set; }
+
+    [DefaultButtonBinding(Buttons.LeftShoulder, Keys.W)]
+    public ButtonBinding DeployElytra { get; set; }
+
+    public bool RequireGrabToPush { get; set; } = true;
 }

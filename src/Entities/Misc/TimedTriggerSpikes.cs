@@ -57,7 +57,8 @@ public class TimedTriggerSpikes : Entity
                     DelayTimer -= Engine.DeltaTime;
                     if (DelayTimer <= 0f)
                     {
-                        if (PlayerCheck())
+                        var check = PlayerCheck();
+                        if (check || (Parent.grouped && Parent.waitForPlayer && Parent.playerPresent))
                         {
                             DelayTimer = 0.05f;
                         }
@@ -132,7 +133,7 @@ public class TimedTriggerSpikes : Entity
 
     #endregion
 
-    // Used to maintain compatibility with Max's Helping Hand RainbowSpinnerColorController
+    // Used to maintain compatibility with Maddie's Helping Hand RainbowSpinnerColorController
     private static readonly CrystalStaticSpinner crystalSpinner = new(Vector2.Zero, false, CrystalColor.Rainbow);
     [MethodImpl(MethodImplOptions.NoInlining)] // No in-lining, method implemented by IL hook
     public static Color GetHue(Scene scene, Vector2 position)
@@ -178,7 +179,7 @@ public class TimedTriggerSpikes : Entity
     {
         if (grouped && !OptionalDependencies.MaxHelpingHandLoaded)
         {
-            throw new Exception("Grouped Timed Trigger Spikes attempted to load without Max's Helping Hand as a dependency.");
+            throw new Exception("Grouped Timed Trigger Spikes attempted to load without Maddie's Helping Hand as a dependency.");
         }
 
         if (rainbow && !OptionalDependencies.VivHelperLoaded)
@@ -430,6 +431,7 @@ public class TimedTriggerSpikes : Entity
         {
             spikes[i].Update();
         }
+        playerPresent = CollideFirst<Player>() is not null;
     }
 
     public override void Render()
@@ -471,6 +473,7 @@ public class TimedTriggerSpikes : Entity
     #region Hooks
 
     private static IDetour hook_TimedTriggerSpikes_GetHue;
+    private bool playerPresent;
 
     internal static void LoadDelayed()
     {

@@ -1,3 +1,83 @@
+--1.18.4 (04/08/2023)--
+* Fixed Shape3DRenderers of same layer being added more than once to the scene.
+* Fixed Elytra launches zeroing-out player facing.
+
+--1.18.3 (01/08/2023)--
+* Move Shape3DRenderer render targets to a static class so savestates cannot interfere with them.
+
+--1.18.2 (30/07/2023)--
+* Fix station blocks being able to travel along one-way paths by dashing into an incorrect side.
+
+--1.18.1 (29/07/2023)--
+* Fix Shape3DRenderer + savestates crash.
+* Move most component types into Components namespace (breaking).
+
+--1.18.0 (28/07/2023)--
+* Added Elytra state.
+* Added Elytra Boost, Stop, Refill & Note Rings.
+* Added Elytra Dash Block.
+* Added Slingshot, Charged & Flying Aero Blocks.
+* Added Spiral Boosters.
+* Added Shapeshifters, Shapeshifter Paths & Follow Shapeshifter Path Triggers.
+* Added Voxel Editor utility.
+* Added Beta Cube backdrop.
+* Added Solar Elevator Set Level trigger.
+* Added custom texture option to Loop Blocks.
+* Fixed Timed Trigger Spikes with Grouped + WaitForPlayer behavior.
+* Fixed Curved Booster & Dream Curved Booster.
+* Fixed Move Block Redirect colors in Lönn plugin.
+* Fixed Dash Collision Panels not having a overrideAllowStaticMovers option.
+* Fixed Red Booster + Connected Dream Block interaction not working.
+* Fixed Dream Jellyfish + Feather state SFX issue.
+* Removed debug print in Redless Berry code.
+* Replace usage of DynData with DynamicData.
+
+--1.17.4 (21/06/2023)--
+* Fixed settings not showing savedata value for AlwaysActiveDreamRefillCharge.
+
+--1.17.3 (29/05/2023)--
+* Add custom sound options to Connected Move Blocks.
+
+--1.17.2 (28/04/2023)--
+* Fix Cloudscape crash caused by save-stating.
+
+--1.17.1 (28/04/2023)--
+* Improve Loop Block Lönn plugin.
+* Fixed DreamJellyfish + Feather state crash.
+
+--1.17.0 (25/04/2023)--
+* Add Move Block Groups.
+* Fix Grab Temple Gate sprite position mismatch in Ahorn plugin.
+
+--1.16.1 (25/04/2023)--
+* Fix Cloudscape rendering on XNA.
+
+--1.16.0 (24/04/2023)--
+* Re-implement & optimize Cloudscape rendering.
+* Added 'chainTexture' option to Chained Dream Falling Block, Chained Falling Block, Chained Kevin.
+* Added 'texture' option to Chain.
+* Fixed PlayerSeekerHair-related crash on room transition after code hot reload.  
+
+--1.15.2 (22/04/2023)--
+* Fix Cloudscape potentially rendering on the wrong render target in some special cases.
+
+--1.15.1 (22/04/2023)--
+* Added 'additive' and 'hasBackgroundColor' options to Cloudscape.
+
+--1.15.0 (22/04/2023)--
+* Ported Air Time Music Controller from Strawberry Jam.
+* Ported Bullet Time Controller from Strawberry Jam.
+* Ported Expiring Dash Refill from Strawberry Jam.
+* Ported Show Hitbox Trigger from Strawberry Jam.
+* Ported Grab Temple Gate from Strawberry Jam.
+* Ported Loop Block from Strawberry Jam.
+* Ported Solar Elevator from Strawberry Jam.
+* Ported Photosensitive Flag Controller from Strawberry Jam.
+* Ported Exploding Strawberry from Strawberry Jam.
+* Ported Wormhole Booster from Strawberry Jam.
+* Make Cloudscape instances use a shared texture buffer instead allocating of their own.
+* Fix Dream Tunnelling bug with Factory Helper dash negators.
+
 --1.14.5 (20/02/2023)--
 * Fix Dream Tunnel Dash grab check.
 * Fix GitHub release workflow.
@@ -222,7 +302,7 @@
 
 --1.7.0 (27/02/2021)--
 * Added Melvin.
-* Added Dream Flag Switch Gate (requires Max's Helping Hand).
+* Added Dream Flag Switch Gate (requires Maddie's Helping Hand).
 * Added deleteBlock & oneUse attributes to MoveBlockRedirects.
 * Made Move Block Redirects able to edit its Move Block's speed.
 * Made Summit Gems work across maps.
@@ -247,7 +327,7 @@
 * Added Switch Track Trigger.
 * Deprecated doubleRefill attribute on CustomDreamBlocks.
 * Added refillCount attribute to CustomDreamBlocks.
-* Added grouping attribute to TimedTriggerSpikes (requires Max's Helping Hand).
+* Added grouping attribute to TimedTriggerSpikes (requires Maddie's Helping Hand).
 * Added rainbow attribute to TimedTriggerSpikes (requires Viv's Helper).
 * Support CollabUtils MiniHeart in SummitGemManager.
 

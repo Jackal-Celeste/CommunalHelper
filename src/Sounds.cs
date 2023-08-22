@@ -89,6 +89,59 @@ public static class CustomSFX
 
     public const string game_seekerDashRefill_seeker_refill_return = "event:/CommunalHelperEvents/game/seekerDashRefill/seeker_refill_return";
     public const string game_seekerDashRefill_seeker_refill_touch = "event:/CommunalHelperEvents/game/seekerDashRefill/seeker_refill_touch";
+
+    #region partial strawberry jam sfx bank port
+
+    public const string game_strawberryJam_bee_fireball_idle = "event:/CommunalHelperEvents/game/strawberryJam/game/bee/fireball_idle";
+    public const string game_strawberryJam_boost_block_boost = "event:/CommunalHelperEvents/game/strawberryJam/game/boost_block/boost";
+    public const string game_strawberryJam_bubble_emitter_bubble_pop = "event:/CommunalHelperEvents/game/strawberryJam/game/bubble_emitter/bubble_pop";
+    public const string game_strawberryJam_bubble_emitter_emitter_generate = "event:/CommunalHelperEvents/game/strawberryJam/game/bubble_emitter/emitter_generate";
+    public const string game_strawberryJam_dash_seq_fail = "event:/CommunalHelperEvents/game/strawberryJam/game/dash_seq/fail";
+    public const string game_strawberryJam_dash_zip_mover_zip_mover = "event:/CommunalHelperEvents/game/strawberryJam/game/dash_zip_mover/zip_mover";
+    public const string game_strawberryJam_drum_swapblock_drum_swapblock_move = "event:/CommunalHelperEvents/game/strawberryJam/game/drum_swapblock/drum_swapblock_move";
+    public const string game_strawberryJam_drum_swapblock_drum_swapblock_move_end = "event:/CommunalHelperEvents/game/strawberryJam/game/drum_swapblock/drum_swapblock_move_end";
+    public const string game_strawberryJam_loop_block_sideboost = "event:/CommunalHelperEvents/game/strawberryJam/game/loop_block/sideboost";
+    public const string game_strawberryJam_solar_elevator_elevate = "event:/CommunalHelperEvents/game/strawberryJam/game/solar_elevator/elevate";
+    public const string game_strawberryJam_solar_elevator_halt = "event:/CommunalHelperEvents/game/strawberryJam/game/solar_elevator/halt";
+    public const string game_strawberryJam_solar_express_rock_stream = "event:/CommunalHelperEvents/game/strawberryJam/game/solar_express/rock_stream";
+    public const string game_strawberryJam_triple_boost_flower_boost_1 = "event:/CommunalHelperEvents/game/strawberryJam/game/triple_boost_flower/boost_1";
+    public const string game_strawberryJam_triple_boost_flower_boost_2 = "event:/CommunalHelperEvents/game/strawberryJam/game/triple_boost_flower/boost_2";
+    public const string game_strawberryJam_triple_boost_flower_boost_3 = "event:/CommunalHelperEvents/game/strawberryJam/game/triple_boost_flower/boost_3";
+    public const string game_strawberryJam_triple_boost_flower_glider_movement = "event:/CommunalHelperEvents/game/strawberryJam/game/triple_boost_flower/glider_movement";
+
+    #endregion
+
+    public const string game_elytra_deploy = "event:/CommunalHelperEvents/game/elytra/deploy";
+    public const string game_elytra_gliding = "event:/CommunalHelperEvents/game/elytra/gliding";
+    public const string game_elytra_refill = "event:/CommunalHelperEvents/game/elytra/refill";
+    public const string game_elytra_rings_boost = "event:/CommunalHelperEvents/game/elytra/rings/boost";
+    public const string game_elytra_rings_stop = "event:/CommunalHelperEvents/game/elytra/rings/stop";
+    public const string game_elytra_rings_refill = "event:/CommunalHelperEvents/game/elytra/rings/refill";
+    public const string game_elytra_rings_booster_ambience = "event:/CommunalHelperEvents/game/elytra/rings/booster_ambience";
+    public const string game_elytra_rings_note = "event:/CommunalHelperEvents/game/elytra/rings/note";
+
+    public const string game_aero_block_deploy_propeller = "event:/CommunalHelperEvents/game/aero_block/deploy_propeller";
+    public const string game_aero_block_failure = "event:/CommunalHelperEvents/game/aero_block/failure";
+    public const string game_aero_block_launch_sequence = "event:/CommunalHelperEvents/game/aero_block/launch_sequence";
+    public const string game_aero_block_loop = "event:/CommunalHelperEvents/game/aero_block/loop";
+    public const string game_aero_block_morse = "event:/CommunalHelperEvents/game/aero_block/morse";
+    public const string game_aero_block_retract_propeller = "event:/CommunalHelperEvents/game/aero_block/retract_propeller";
+    public const string game_aero_block_smash = "event:/CommunalHelperEvents/game/aero_block/smash";
+    public const string game_aero_block_static = "event:/CommunalHelperEvents/game/aero_block/static";
+    public const string game_aero_block_success = "event:/CommunalHelperEvents/game/aero_block/success";
+    public const string game_aero_block_warn = "event:/CommunalHelperEvents/game/aero_block/warn";
+    public const string game_aero_block_button_charge = "event:/CommunalHelperEvents/game/aero_block/button_charge";
+    public const string game_aero_block_button_let_go = "event:/CommunalHelperEvents/game/aero_block/button_let_go";
+    public const string game_aero_block_button_press = "event:/CommunalHelperEvents/game/aero_block/button_press";
+    public const string game_aero_block_push = "event:/CommunalHelperEvents/game/aero_block/push";
+    public const string game_aero_block_lock = "event:/CommunalHelperEvents/game/aero_block/lock";
+    public const string game_aero_block_ding = "event:/CommunalHelperEvents/game/aero_block/ding";
+    public const string game_aero_block_wind_up = "event:/CommunalHelperEvents/game/aero_block/wind_up";
+    public const string game_aero_block_impact = "event:/CommunalHelperEvents/game/aero_block/impact";
+
+    public const string game_shapeshifter_shake = "event:/CommunalHelperEvents/game/shapeshifter/shake";
+    public const string game_shapeshifter_supermove = "event:/CommunalHelperEvents/game/shapeshifter/supermove";
+    public const string game_shapeshifter_move = "event:/CommunalHelperEvents/game/shapeshifter/move";
 }
 
 public static class CustomBanks
