@@ -8,7 +8,8 @@ public class ChainedFallingBlock : Solid
     private readonly char tileType;
     private readonly TileGrid tiles;
 
-    private bool hasStartedFalling, hasFallen, move;
+    private bool hasStartedFalling; 
+    public bool hasFallen, move;
     private readonly bool climbFall;
     private bool held;
 
@@ -58,6 +59,7 @@ public class ChainedFallingBlock : Solid
             Depth = Depths.SolidsBelow;
 
         origPosition = new Vector2(X, Y);
+        hasFallen = false;
     }
 
     public override void OnShake(Vector2 amount)
@@ -127,16 +129,13 @@ public class ChainedFallingBlock : Solid
                 {
                     held = true;
                     MoveToY(chainStopY, LiftSpeed.Y);
+                    hasFallen = true;
                     break;
                 }
                 yield return null;
             }
 
-            ImpactSfx();
-            Input.Rumble(RumbleStrength.Strong, RumbleLength.Medium);
-            SceneAs<Level>().DirectionalShake(Vector2.UnitY, 0.3f);
-            StartShaking();
-            LandParticles();
+            
 
             rattle.Stop();
             if (held)
@@ -161,6 +160,7 @@ public class ChainedFallingBlock : Solid
             {
                 yield return 0.1f;
             }
+            
         }
         Safe = true;
     }
@@ -204,7 +204,7 @@ public class ChainedFallingBlock : Solid
         }, Center);
     }
 
-    private void ImpactSfx()
+    public void ImpactSfx()
     {
         // Some impacts weren't as attenuated like the game_gen_fallblock_impact event,
         // and it was inconsistent with the fact that you can hear the chain tighten but not the block impact.
